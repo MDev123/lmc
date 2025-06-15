@@ -1,0 +1,58 @@
+version: '3'
+services:
+  proxy:
+    image: itzg/bungeecord
+    container_name: lunamc-proxy
+    ports:
+      - "25565:25577"
+    volumes:
+      - ./bungee:/server
+    restart: always
+
+  hub:
+    image: itzg/minecraft-server
+    container_name: lunamc-hub
+    environment:
+      EULA: "TRUE"
+      TYPE: PAPER
+      VERSION: 1.8.8
+      ONLINE_MODE: "FALSE"
+    volumes:
+      - ./hub:/data
+    restart: always
+
+  survival:
+    image: itzg/minecraft-server
+    container_name: lunamc-survival
+    environment:
+      EULA: "TRUE"
+      TYPE: PAPER
+      VERSION: 1.8.8
+      ONLINE_MODE: "FALSE"
+    volumes:
+      - ./survival:/data
+    restart: always
+
+  creative:
+    image: itzg/minecraft-server
+    container_name: lunamc-creative
+    environment:
+      EULA: "TRUE"
+      TYPE: PAPER
+      VERSION: 1.8.8
+      ONLINE_MODE: "FALSE"
+    volumes:
+      - ./creative:/data
+    restart: always
+
+  lifesteal:
+    image: itzg/minecraft-server
+    container_name: lunamc-lifesteal
+    environment:
+      EULA: "TRUE"
+      TYPE: PAPER
+      VERSION: 1.8.8
+      ONLINE_MODE: "FALSE"
+    volumes:
+      - ./lifesteal:/data
+    restart: always
